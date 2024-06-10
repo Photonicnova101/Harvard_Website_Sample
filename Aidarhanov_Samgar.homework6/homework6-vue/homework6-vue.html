@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="css/transcript.css">
+    <script type="text/javascript" src="jwplayer/jwplayer.js"></script>
+    <script type="text/javascript">jwplayer.key="kCqE9K8EVVjA+o40SKCMr1/JXOrlDpbOhctE8g==";</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="js/transcript.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>CSCI E-3 Homework #6</h1>
+      <p class="whatlearn">Homework #6 will give you a chance to exercise
+        your knowledge of VueJS and of multimedia players like the
+        JWPlayer.&nbsp; We're building on the "divide-text-into-spans" example
+        we started in a prior Homework, and will finish this with a fully-working
+        example. &nbsp; </p>
+      <h4><br>
+        <em>We will use JWPlayer to to add a video to this page, use a VueJS component to add the
+           transcript to the page and make the transcript interactive with the video. The file at
+          js/transcript.js has a framework "stubbed out" with a few key code
+          segments&nbsp; for you to fill in.&nbsp; <br>
+        </em></h4>
+      At the bottom of this page, below the video player, is a block of text which is the transcript from
+      a public-domain video produced by NASA. (Sorry for the hokey video - I
+      needed something public domain, brief, and for which there was a timed
+      transcript available).&nbsp; If you look at the source code, you'll see
+      that this seemingly single block of text is actually broken up into many
+      separate SPANs, similar to the ones you made in Homework #4.&nbsp;
+      <br><br>
+      In fact, this
+      HTML is created by a Vue component. The transcript data is contiained in the component's
+      <code>data</code> property as a JSON object. The raw HTML contains a <code>&lt;transcript&gt;</code> tag
+      where the component renders.
+      <br>
+      <br>
+      The HTML source code created by the Vue component looks something like this:<br>
+      <blockquote><span style="font-family: monospace;">&lt;span class="words"
+          data-start="17.869" data-dur="3.82"&gt;Hey this is Dwayne Johnson.
+          While playing astronaut Chuck Baker in the film Planet&lt;/span&gt;<br>
+          &lt;span class="words" data-start="21.689"
+          data-dur="0.701"&gt;51&lt;/span&gt;<br>
+          &lt;span class="words" data-start="22.39" data-dur="3.56"&gt;I gained
+          a lot of respect for our nation's space program. NASA makes
+          new&lt;/span&gt;</span></blockquote>
+      The code in the js/transcript.js file provides the framework for the
+      solution, which uses jwPlayer to embed the video and provide the Javascript API
+      that lets us interact with the video; and uses VueJS to create the transcript and its behaviors. <br>
+      <br>
+      The resulting behavior is twofold:<br>
+      <ol>
+        <li>As the video plays, the relevant part of the transcript highlights.
+        </li>
+        <li>If the user clicks on the transcript, the video seeks to the
+          relevant segment.</li>
+      </ol>
+      <p>A video showing the desired behavior is on
+          the assignment page in Canvas.</p>
+      <ol>
+      </ol>
+      Much of the code is provided for you in a well-commented framework, but
+      the solution will require you to add code in <span style="text-decoration: line-through;">four</span>
+      three places, each marked by a comment line like this: "YOUR CODE TO ADD #<em>n</em>":<br>
+      <ol>
+        <li><b><span style="text-decoration: line-through;">YOUR CODE TO ADD #1: </span></b>The
+          first one is at the top of the JS file, where you'll create the
+          jwplayer and load it into the page <em>(this one is already done for
+            you ... you're welcome!)</em></li>
+        <li>
+            <b>YOUR CODE TO ADD #2 - Make the transcript clickable:</b> Inside the Vue component, the click handler for each element is
+              created, but the logic inside is missing. You'll add the code that
+              causes a click to make the player seek to the right moment.
+        </li>
+        <li>
+          <b>YOUR CODE TO ADD #3 - Get the player time as it plays:</b>
+          Next you'll get the current position of the video playback from the
+          jwplayer's event object
+        </li>
+        <li><b>YOUR CODE TO ADD #4 - Highlight the transcript as the video plays:</b>
+          Finally, you'll write the function that compares the
+          current player time with the time described in each element, and apply
+          a highlight style if the times match up.&nbsp; </li>
+      </ol>
+      <p>If this sounds scary, don't despair!&nbsp; The code already includes
+        most of the heavy lifting, detailed instructions, and pseudo-code is
+        provided in several places. </p>
+      <p>We will cover JWPlayer in the course in great detail and walk
+        through some examples very similar to this one.&nbsp;</p>
+      <p>As usual, submit your project as a zip file, with a folder named like
+        [lastname_firstname].homework6 zipped into a file called
+        [lastname_firstname].homework6.zip. </p>
+      <div id="playerDiv"></div>
+      <div id="videoTranscript">
+        <transcript></transcript>
+      </div>
+    </div>
+  </body>
+</html>
